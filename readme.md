@@ -1,12 +1,14 @@
 #  Chamfer Distance Convergence Simulations
 ## Problem Description
-The Chamfer distance is a pseudometric (it's not symmetric) used to measure the distance between two clusters of data, sometimes used in the context of computer vision. Specifically, let $D_1:=\{x_i\}$ and $D_2:=\{y_j\}$ be our two finite data sets contained in $\mathbb{R}^d$ for some $d\in \N$. The (unidirectional) Chamfer distance is defined as:
+The Chamfer distance is a pseudometric (it's not symmetric) used to measure the distance between two clusters of data, sometimes used in the context of computer vision. Specifically, let $D_1:=\{x_i\}$ and $D_2:=\{y_j\}$ be our two finite data sets contained in $\mathbb{R}^d$ for some $d\in \mathbb{N}$. The (unidirectional) Chamfer distance is defined as:
 
 $d_C(D_1,D_2):=\left[\frac{1}{|D_1|}\sum_{x_i\in D_1}\min_{y_j\in D_2} \|x_i-y_j\|^2  \right]^{1/2}$
 
 This simple project was designed to approximate the convergence rate of the Chamfer distance as the number of sample points in $D_2$ grows large in various dimensions. This is done by simulating points sampled uniformly on the surface of a hypersphere, representing a fairly worst-case scenario for a distribution on any given compact set.
 
 Note that this can be determined exactly through use of order statistics for normal distributions, but those calculations have no closed form and are numerically unstable. Hence the usage of monte carlo simulations.
+
+## Methods
 
 Normally one generates points on the surface of a sphere using multivariate gaussian distributions, but that proves to be computationally expensive in higher dimensions (generating a single point in $\mathbb{R}^d$ requires $d$ IID normal samplings, which explodes the computational cost for large simulation runs). Instead, by spherical symmetry, we assume that the first point drawn is $x_i=(1,0,\dots,0)$. For the second point, we don't need to sample every component, since we can express the distance as
 
