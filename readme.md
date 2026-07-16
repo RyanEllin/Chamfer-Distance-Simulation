@@ -20,7 +20,15 @@ $r= \frac{1}{(N^2+X)^{1/2}}$
 
 $\|x_i-y_j\|^2= (1-\frac{N}{r})^2 + \frac{X}{r^2}$
 
-Which is vastly more efficient computationally.
+Which is vastly more efficient computationally. By linearity of the squared Chamfer distance, we need only compute the distance to a single point. Letting $(N_j, X_j)_j$ represent $|D_2|$ IID draws from  $(N, X)$, we have:
+
+$\begin{align}d_C(D_1,D_2)^2&=\frac{1}{|D_1|}\sum_{x_i\in D_1}\min_{y_j\in D_2} \|x_i-y_j\|^2 \\
+&= \min_{y_j\in D_2} \|x_1-y_j\|^2\\
+&= \min_j\left(1-\frac{N_j}{r}\right)^2 + \frac{X_j}{r^2}
+\end{align}
+$
+
+Thus, if we have $n$  data points in $D_2$, we take $n$ draws from $(1-\frac{N}{r})^2 + \frac{X}{r^2}$ and take the minimum value. For each value of $n$ this is repeated 50 times, and we plot the results.
 
 ## Results
 
