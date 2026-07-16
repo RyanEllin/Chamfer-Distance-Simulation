@@ -22,7 +22,7 @@ $\|x_i-y_j\|^2= (1-\frac{N}{r})^2 + \frac{X}{r^2}$
 
 Which is vastly more efficient computationally. By linearity of the squared Chamfer distance, we need only compute the distance to a single point. Letting $(N_j, X_j)_j$ represent $|D_2|$ IID draws from  $(N, X)$, we have:
 
-$d_C(D_1,D_2)^2=\frac{1}{|D_1|}\sum_{x_i\in D_1}\min_{y_j\in D_2} \|x_i-y_j\|^2 \\$
+$d_C(D_1,D_2)^2=\frac{1}{|D_1|}\sum_{x_i\in D_1}\min_{y_j\in D_2} \|x_i-y_j\|^2$
 
 $= \min_{y_j\in D_2} \|x_1-y_j\|^2$
 
